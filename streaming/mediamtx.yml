@@ -1,0 +1,24 @@
+logLevel: info
+rtsp: false
+rtmp: false
+srt: false
+webrtc: false
+hls: true
+hlsAddress: :8888
+hlsAlwaysRemux: false
+
+pathDefaults:
+  sourceOnDemand: true
+  sourceOnDemandStartTimeout: 15s
+  sourceOnDemandCloseAfter: 15s
+  rtspTransport: tcp
+
+paths:
+  cam1:
+    source: publisher
+  cam2:
+    source: publisher
+  cam3:
+    source: publisher
+  cam4:
+    source: publisher
