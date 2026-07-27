@@ -9,23 +9,23 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
 
   return {
-    title: "HomeWatch | Private Camera Dashboard",
-    description: "A secure, private view of your home cameras and local DVR recording status.",
+    title: "HomeWatch | Panel privado de cámaras",
+    description: "Una vista privada y protegida de las cámaras del hogar y del estado de grabación del DVR local.",
     openGraph: {
       title: "HomeWatch",
-      description: "Private cameras. Clear view.",
+      description: "Cámaras privadas. Visión clara.",
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "HomeWatch Night Watch dashboard" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "Panel de vigilancia nocturna de HomeWatch" }],
     },
     twitter: {
       card: "summary_large_image",
       title: "HomeWatch",
-      description: "Private cameras. Clear view.",
+      description: "Cámaras privadas. Visión clara.",
       images: [`${origin}/og.png`],
     },
   };
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="es"><body>{children}</body></html>;
 }
