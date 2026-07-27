@@ -21,6 +21,7 @@
 # misc
 .DS_Store
 *.pem
+.cam*.jpg
 
 # debug
 npm-debug.log*
@@ -33,6 +34,7 @@ yarn-error.log*
 .env*
 !.env.example
 !**/.env.example
+**/cloudflared.env
 
 # vercel
 .vercel

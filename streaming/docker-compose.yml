@@ -1,4 +1,17 @@
 services:
+  dashboard:
+    image: ojocams-dashboard:latest
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: true
+    environment:
+      MEDIA_MTX_API_URL: http://relay:9997
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - relay
+
   relay:
     image: bluenviron/mediamtx:1
     restart: unless-stopped
@@ -6,6 +19,17 @@ services:
       - path: .env
         required: false
     ports:
-      - "127.0.0.1:8888:8888"
+      - "${HLS_BIND_ADDRESS:-127.0.0.1}:8888:8888"
     volumes:
       - ./mediamtx.yml:/mediamtx.yml:ro
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - path: cloudflared.env
+        required: true
+    command: tunnel --no-autoupdate run
+    depends_on:
+      - relay
